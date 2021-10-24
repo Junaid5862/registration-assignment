@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Registration form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+    </style>
+	<link rel="stylesheet" href="@sweetalert2/themes/dark/dark.css">
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <script>
+        function validate() {
+
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var text = document.getElementById("messages").value;
+			
+			 
+            if (fname == "") {
+                document.getElementById('message').innerHTML = "** plese write fist name"
+
+                return false;
+            }
+
+
+            if (lname == "") {
+                document.getElementById('message2').innerHTML = "** plese write last name"
+
+                return false;
+            }
+			
+			
+
+            var a = document.myform.vehical;
+            var b = 0;
+            var i
+            var j;
+            for (i = 0; i < a.length; i++) {
+                if (a[i].checked == true) {
+                    b = b + 1;
+                }
+
+            }
+            if (b == 0) {
+                document.getElementById('notvalid').innerHTML = "** plese slect any one"
+                return false;
+            }
+            if (b >= 3) {
+                document.getElementById('notvalid').innerHTML = "** plese slect any two"
+                return false;
+            }
+            if (text.length < 50) {
+                document.getElementById('text_box').innerHTML = "** meassage must be more than 50"
+                return false;
+            }
+            if (text.length < 50) {
+                document.getElementById('text_box').innerHTML = "** meassage must be less than 100"
+                return false;
+            }
+            var c = document.myform.lang;
+
+            for (let i = 0; i < a.length; i++) {
+
+                if (c[i].checked == true)
+				return true;
+				}
+                 document.getElementById('msg').innerHTML = "** plese slect any one"
+               return false;        
+            
+        }
+
+
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 col-lg-10">
+                <h1>Fill the form</h1>
+                <form name="myform" action="" method="GET" onsubmit="return validate()">
+                    First Name :<br>
+                    <input id="fname" type="text" placeholder="Enter your name here..."  /><br>
+                    <p id="message" style="color:red; "></p>
+                    Last Name :<br>
+                    <input id="lname" type="text" placeholder="Enter your surname here..." /><br><br>
+                    <p id="message2" style="color:red; "></p>
+        
+                    <input type="checkbox" name="vehical" value="I have bike" id="vehical"/>
+                    I have bike <br>
+                    <input type="checkbox" name="vehical" value="I have car" id="vehical"  />
+                    I have car<br>
+                    <input type="checkbox" name="vehical" value="I have boat" id="vehicals" />
+                    I have boat<br>
+                    <div>
+                        <span id="notvalid" style="color: red;"></span>
+                    </div>
+                    <select id="ddselect">
+                        <option selected>Please select</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="Saab">Saab</option>
+                        <option value="Fiat">Fiat</option>
+                        <option value="Audi">Audi</option>
+                    </select>
+                    <br><br>
+                    <textarea id="messages" name="message" rows="10" cols="20"
+                        placeholder="Enter your message"></textarea><br><br>
+                    <div>
+                        <span id="text_box" style="color: red;"></span>
+                    </div>
+                    <input type="radio" name="lang" id="lang">HTML<br>
+                    <input type="radio" name="lang" id="lang">CSS<br>
+                    <input type="radio" name="lang" id="lang">JavaScript<br><br>
+                    <div>
+                        <span id="msg" style="color: red;"></span>
+                    </div>
+        
+                    <input type="submit" value="submit" />
+                </form>
+            </div>
+            </div>
+        </div>
+    </body>
+
+</html>
